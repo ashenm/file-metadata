@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Get metadata of an uploaded file" />
+  <meta name="keywords" content="ashen m. gunaratne freecodecamp projects api" />
+  <meta name="author" content="Ashen Gunaratne" />
+  <title>File Metadata Microservice</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+  <style type="text/css">
+
+    body {
+      display: flex;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    ul {
+      padding: 0px;
+      margin-top: 0px;
+      list-style: none;
+    }
+
+    .container {
+      width: 100%;
+      margin-left: 5vw;
+      margin-right: 5vw;
+      font-family: "Segoe UI", "Helvetica", "Arial";
+    }
+
+    .d-inline {
+      display: inline;
+    }
+
+    .d-none {
+      display: none;
+    }
+
+    .file-label {
+      cursor: pointer;
+      padding: 3px 24px 1.25px 24px;
+      border-radius: 9px;
+    }
+
+    .file-input {
+      width: .1px;
+      height: .1px;
+      opacity: 0;
+      z-index: -1;
+      overflow: hidden;
+      position: absolute;
+    }
+
+    .ionicons {
+      font-size: 49px;
+    }
+
+  </style>
+  <script type="text/javascript">
+
+    // DOM references
+    const node = Object.create(null);
+
+    // on DOM ready
+    document.onreadystatechange = function() {
+      if (document.readyState === 'interactive') {
+
+        // associate DOM node references
+        node.main = document.querySelector('main');
+        node.fileList = node.main.querySelector('ul');
+        node.fileInput = node.main.querySelector('[type="file"]');
+        node.buttonUpload = node.main.querySelector('[type="submit"]');
+
+        // list file(s) on select
+        node.fileInput.onchange = list;
+
+      }
+    };
+
+    /**
+     * Populate unordered list with each 
+     * list item corresponding to a file name
+     */
+    function list(e) {
+
+      // remove all child elements
+      node.fileList.innerHTML = '';
+
+      // only show submit button
+      // if any file selected
+      node.buttonUpload.style.display =
+        this.files.length === 0 ? 'none' : 'inline-block';
+
+      // populate selected file names
+      for (const file of this.files) {
+        const li = document.createElement('li');
+        li.innerText = file.name;
+        node.fileList.appendChild(li);
+      }
+
+    }
+
+  </script>
+</head>
+<body>
+  <div class="container">
+    <main>
+      <form>
+        <label class="file-label">
+          <input type="file" name="files" class="file-input" multiple="multiple" required="required" value="upload" />
+          <i class="ionicons ion-document"></i>
+        </label>
+        <ul></ul>
+        <input type="submit" class="d-none" formaction="upload" formmethod="post" value="Upload" />
+      </form>
+    </main>
+  </div>
+</body>
+</html>
