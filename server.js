@@ -17,13 +17,6 @@ http.createServer((request, response) => {
 
   const pURL = url.parse(request.url);
 
-  // index
-  if (/^\/$/.test(pURL.pathname)) {
-    response.writeHead(200, {'Content-Type': 'text/html'});
-    fs.createReadStream(path.join(__dirname, 'public', 'index.html')).pipe(response);
-    return;
-  }
-
   // file upload route
   if (/^\/upload$/.test(pURL.pathname) && /POST/.test(request.method)) {
     metadata(request, (error, metadata) => {
@@ -31,6 +24,21 @@ http.createServer((request, response) => {
         ? (response.writeHead(200, {'Content-Type': 'application/json'}), response.end(JSON.stringify(metadata)))
         : (response.writeHead(400, {'Content-Type': 'text/plain'}), response.end(response.statusMessage));
     });
+    return;
+  }
+
+  // only allow GET requests
+  // to subsequent routes
+  if (!/GET/.test(request.method)) {
+    response.writeHead(405, {'Content-Type': 'text/plain'});
+    response.end(response.statusMessage);
+    return;
+  }
+
+  // index
+  if (/^\/$/.test(pURL.pathname)) {
+    response.writeHead(200, {'Content-Type': 'text/html'});
+    fs.createReadStream(path.join(__dirname, 'public', 'index.html')).pipe(response);
     return;
   }
 
