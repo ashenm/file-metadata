@@ -1,0 +1,30 @@
+{
+  "name": "file-metadata",
+  "version": "0.0.1",
+  "description": "A freeCodeCamp API Project - File Metadata Microservice",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashenm/file-metadata.git"
+  },
+  "keywords": [
+    "ashen",
+    "gunaratne",
+    "freecodecamp",
+    "projects",
+    "api"
+  ],
+  "author": "Ashen Gunaratne <mail@ashenm.ml>",
+  "license": "ISC",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/ashenm/file-metadata/issues"
+  },
+  "homepage": "https://github.com/ashenm/file-metadata#readme",
+  "dependencies": {
+    "formidable": "^1.0"
+  }
+}
