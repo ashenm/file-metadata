@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="Get metadata of an uploaded file" />
+  <meta name="description" content="Get metadata of a file" />
   <meta name="keywords" content="ashen m. gunaratne freecodecamp projects api" />
   <meta name="author" content="Ashen Gunaratne" />
   <title>File Metadata Microservice</title>
@@ -75,7 +75,7 @@
         node.fileInput = node.main.querySelector('[type="file"]');
         node.buttonUpload = node.main.querySelector('[type="submit"]');
 
-        // list file(s) on select
+        // list selected file(s)
         node.fileInput.onchange = list;
 
       }
@@ -115,7 +115,7 @@
           <i class="ionicons ion-document"></i>
         </label>
         <ul></ul>
-        <input type="submit" class="d-none" formaction="upload" formmethod="post" value="Upload" />
+        <input type="submit" class="d-none" formenctype="multipart/form-data" formaction="upload" formmethod="post" value="Upload" />
       </form>
     </main>
   </div>
