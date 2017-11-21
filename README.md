@@ -1,2 +1,2 @@
 # File Metadata Microservice #
-###### A [freeCodeCamp](https://www.freecodecamp.org/challenges/url-shortener-microservice) API Project ######
+###### A [freeCodeCamp](https://www.freecodecamp.org/challenges/file-metadata-microservice) API Project ######
